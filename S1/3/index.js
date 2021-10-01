@@ -13,6 +13,14 @@ let dishes = [{
     id: 3,
     name: 'McFlurry',
     price: 6,
+}, {
+    id: 4,
+    name: 'Chicken',
+    price: 4,
+}, {
+    id: 5,
+    name: 'Pizza',
+    price: 8,
 }];
 
 window.onload = function(){
@@ -33,20 +41,35 @@ window.onload = function(){
         let orderScript = {
             name, email, dish
         }
+
         document.getElementById('messages').innerHTML = messagePrint(orderScript);
+    });
 
-    })
-
-}
-function calculatePrice(){
     let calculate = document.getElementById('btnPrice');
     calculate.addEventListener('click', e => {
         e.preventDefault();
-        let checked = document.querySelector("input[name='dish']:checked").value;
+        console.log('EventListener CalcBtn works');
+        calculatePrice();
+    });
 
-        console.log('Checked', checked);
-
+}
+function calculatePrice(){
+    console.log('Button Calc works');
+    
+    let checked = document.querySelector("input[name='dish']:checked").value;
+    dishes.forEach(checkedOrders => {
+        
     })
+    // dishes.forEach(checkedOrders => {
+    //         let checked = document.querySelector("input[name='dish']:checked").value;
+    //     })
+    //console.log('Done', checkedOrders);      
+
+        // let orderDishes = {
+        //     checked
+        // }
+        //console.log('Orders', orderDishes);
+    //return `<p>De total amaount is ${orderScript.dish.price}</p>`
 }
 
 function messagePrint(orderScript){

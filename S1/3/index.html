@@ -31,22 +31,34 @@
           
           <div class="form-group"> 
             <label for="orderInputs">Order</label>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="dish" id="dish1" value="1">
-                <label class="form-check-label" for="radios1">
+            <div class="formCheck">
+                <input class="checkInput" type="checkbox" name="dish" id="dish1" value="1">
+                <label class="checkLabel" for="checkbox1">
                   Burger
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="dish" id="dish2" value="2">
-                <label class="form-check-label" for="radios2">
+                <input class="checkInput" type="checkbox" name="dish" id="dish2" value="2">
+                <label class="checkLabel" for="checkbox2">
                   Fries
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="dish" id="dish3" value="3">
-                <label class="form-check-label" for="radios3">
+                <input class="checkInput" type="checkbox" name="dish" id="dish3" value="3">
+                <label class="checkLabel" for="checkbox3">
                    McFlurry
+                </label>
+              </div> 
+              <div class="form-check">
+                <input class="checkInput" type="checkbox" name="dish" id="dish4" value="4">
+                <label class="checkLabel" for="checkbox4">
+                   Chicken
+                </label>
+              </div> 
+              <div class="form-check">
+                <input class="checkInput" type="checkbox" name="dish" id="dish5" value="5">
+                <label class="checkLabel" for="checkbox5">
+                   Pizza
                 </label>
               </div> 
           </div>
@@ -54,12 +66,15 @@
           <br><br>
           
           <button type="submit" class="btnSub">Submit</button>
-          <button class="btnPrice">Calculate price</button>
+          <button type="submit" id="btnPrice">Calculate price</button>
           
-      </form>
+        </form>
       
       <div id="messages">
       </div>
       
+      <div id="price">
+      </div>
+
   </body>
 </html>
