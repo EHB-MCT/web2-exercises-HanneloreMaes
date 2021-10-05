@@ -12,12 +12,17 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
                 .then (response2 => response2.json())
                 .then(data2 => {
                     console.log('Succes 2', data2);
-                    //console.log('Types', data2.types);
+
+                    let hello = data2.types;
+                    console.log('giyefgyfs', hello);
+                    let types = hello.map(obj => obj.type.name);
+                    console.log('Types', types);
+                    
                     let container = document.getElementById('blokske');
                     let htmlString = `
                         <h2>${data2.name}</h2>
                         <img src="${data2.sprites.front_default}" alt="pokémonImg">
-                        <p>Type: ${data2.types[0].type.name}</p>
+                        <p>Type: ${types}</p>
                         <button type="submit">Take me home :)</button>`;
                     
                         container.insertAdjacentHTML('beforeEnd', htmlString);
