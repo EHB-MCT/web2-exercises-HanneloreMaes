@@ -15,10 +15,10 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
                     //console.log('Types', data2.types);
                     let container = document.getElementById('blokske');
                     let htmlString = `
-                        <img src="${data2.sprites.front_default}" alt="pokémonImg">
                         <h2>${data2.name}</h2>
+                        <img src="${data2.sprites.front_default}" alt="pokémonImg">
                         <p>Type: ${data2.types[0].type.name}</p>
-                        <button type="submit"></button>`;
+                        <button type="submit">Take me home :)</button>`;
                     
                         container.insertAdjacentHTML('beforeEnd', htmlString);
                 })
