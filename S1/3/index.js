@@ -32,11 +32,11 @@ window.onload = function(){
 
         let name = document.getElementById("nameInputs").value;
         let email = document.getElementById("emailInputs").value;
-        let order = document.querySelector("input[name='dish']:checked").value;
+        let order = document.getElementsByName('dish');
 
         
-        let dish = dishes.find(d => d.id == order);            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
-                                                              // d.id staat voor de id dat meegegeven is in object dishes.
+        let dish = dishes.find(objects => objects.id == order);            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+        console.log('dishes', order)  ;                                    // d.id staat voor de id dat meegegeven is in object dishes.
         
         let orderScript = {
             name, email, dish
@@ -45,21 +45,24 @@ window.onload = function(){
         document.getElementById('messages').innerHTML = messagePrint(orderScript);
     });
 
-    let calculate = document.getElementById('btnPrice');
-    calculate.addEventListener('click', e => {
-        e.preventDefault();
-        console.log('EventListener CalcBtn works');
-        calculatePrice();
-    });
+//     let calculate = document.getElementsByClassName('btnPrice');
+//     calculate.addEventListener('click', e => {
+//         e.preventDefault();
+//         console.log('EventListener CalcBtn works');
+//         calculatePrice();
+//     });
 
-}
-function calculatePrice(){
-    console.log('Button Calc works');
+// }
+// function calculatePrice(){
+//     console.log('Button Calc works');
     
-    let checked = document.querySelector("input[name='dish']:checked").value;
-    dishes.forEach(checkedOrders => {
+//     let checked = document.querySelector("input[name='dish']:checked").value;
+//     dishes.forEach(checkedOrders => {
         
-    })
+//     })
+
+
+
     // dishes.forEach(checkedOrders => {
     //         let checked = document.querySelector("input[name='dish']:checked").value;
     //     })
@@ -73,7 +76,7 @@ function calculatePrice(){
 }
 
 function messagePrint(orderScript){
-    console.log('Sort Dish', orderScript.dish);
+    console.log('Sort Dish', orderScript);
     return `<p> The order for the customer ${orderScript.name} is the following: ${orderScript.dish.name}. The customer may be notified by email: ${orderScript.email}. </p>`;
 }
 
