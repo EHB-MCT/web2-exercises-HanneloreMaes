@@ -35,6 +35,15 @@ window.onload = function(){
         })
         
     })
+
+    let button = document.getElementById('addPokémon');
+    button.forEach(item => {
+        item.addEventListener('click', e =>{
+            e.preventDefault();
+
+            let id = e.target.id;
+        });
+    })
 }
 
 refreshTeam();
