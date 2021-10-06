@@ -1,8 +1,11 @@
 "use strict";
 
-import * as Team from './2/Team.js'
+import * as Team from '../2/Team.js';
 
-fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
+let team1 = new Team();
+
+window.onload = function(){
+    fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
     .then(response => response.json())
     .then(data => {
         console.log('Succes', data)
@@ -25,10 +28,19 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
                         <h2>${data2.name}</h2>
                         <img src="${data2.sprites.front_default}" alt="pokémonImg">
                         <p>Type: ${types}</p>
-                        <button type="submit">Take me home :)</button>`;
+                        <button type="submit" id="addPokémon">Take me home :)</button>`;
                     
                         container.insertAdjacentHTML('beforeEnd', htmlString);
                 })
         })
         
     })
+}
+
+refreshTeam();
+
+
+function refreshTeam(){
+    let refreshContainer = document.getElementById('team');
+    refreshContainer.innerHTML = team1.describe();
+}
