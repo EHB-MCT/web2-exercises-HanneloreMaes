@@ -27,19 +27,13 @@ let team1 = new Team();
                         <h2>${data2.name}</h2>
                         <img src="${data2.sprites.front_default}" alt="pokémonImg">
                         <p>Type: ${types}</p>
-                        <button type="button" class="btn" id="${data2.id}">Take me home :)</button>`;
+                        <button type="button" class="btn${data2.id}" id="${data2.id}">Take me home :)</button>`;
                     
                         container.insertAdjacentHTML('beforeEnd', htmlString);
                 
 
-                    let button = document.querySelectorAll('.btn');
-                    button.forEach(item => {
-                        item.addEventListener('click', e =>{
-                            e.preventDefault();
-                            let id = e.target.id;
-                            console.log('Hello', id);
-                        });
-                    })
+                    let button = document.getElementById(`${data2.id}`);
+                    button.addEventListener('click', e => buttonHandler(e));
     
                 })
         })
@@ -50,6 +44,13 @@ let team1 = new Team();
 
 refreshTeam();
 
+function buttonHandler(e){
+    e.preventDefault();
+    console.log(`Test ButtonHandler ${e.target.id}`);
+
+    let id = e.target.id;
+    console.log('Id Target', id);
+}
 
 function refreshTeam(){
     let refreshContainer = document.getElementById('team');
