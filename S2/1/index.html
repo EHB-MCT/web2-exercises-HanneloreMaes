@@ -10,9 +10,19 @@
   <body>
       <h1>S2</h1>
       
-      <div id="team">
-
-      </div>
+      <form id="form">
+        <div class="form-group">
+          <label for="trainerInput">Trainer</label>
+          <input type="text" name="trainer" class="form-control" id="trainerInputs" required>
+        </div>        
+        <div class="form-group">
+            <label for="nameInput">Team name</label>
+            <input type="text" name="name" class="form-control" id="nameInputs" required>
+        </div>
+        <button type="submit" class="btnSub">Submit</button>
+    </form>
+      <div id="team"></div>
+      <div id="error"></div>
       <div id="blokske">
         <!-- <img src="" alt="pokémonImg">
         <h2></h2>

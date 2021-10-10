@@ -4,6 +4,16 @@ import Team from '../2/Team.js';
 
 let team1 = new Team();
 
+    let formEvent = document.getElementById('form').addEventListener('submit', e => {
+        e.preventDefault();
+
+        let name = document.getElementById("nameInputs").value;
+        let trainer = document.getElementById("trainerInputs").value;
+
+        team1.teamname = name;
+        team1.trainer = trainer;
+    })
+
     fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
     .then(response => response.json())
     .then(data => {
@@ -27,12 +37,12 @@ let team1 = new Team();
                         <h2>${data2.name}</h2>
                         <img src="${data2.sprites.front_default}" alt="pokémonImg">
                         <p>Type: ${types}</p>
-                        <button type="button" class="btn${data2.id}" id="${data2.id}">Take me home :)</button>`;
+                        <button type="button" class="btn" id="${data2.name}">Take me home :)</button>`;
                     
                         container.insertAdjacentHTML('beforeEnd', htmlString);
                 
 
-                    let button = document.getElementById(`${data2.id}`);
+                    let button = document.getElementById(`${data2.name}`);
                     button.addEventListener('click', e => buttonHandler(e));
     
                 })
@@ -42,17 +52,33 @@ let team1 = new Team();
 
     
 
-refreshTeam();
-
 function buttonHandler(e){
     e.preventDefault();
-    console.log(`Test ButtonHandler ${e.target.id}`);
-
+    //console.log(`Test ButtonHandler ${e.target.id}`);
     let id = e.target.id;
-    console.log('Id Target', id);
+    //console.log('Id Target', id);
+    //console.log('Pushen naar roster', team1.roster);
+
+    let listPokémon = team1.roster;
+    listPokémon.push(id);
+    refreshTeam();
+
+    // if (listPokémon < 5){
+    //     refreshTeam();
+    // } else if (listPokémon > 5){
+    //     let errorContainer = document.getElementById('error');
+    //     let message = `
+    //         <h3>ERROR</h3>
+    //         <p>You chose more pokémons than allowed!
+    //         Refresh page and chose again</p>`;
+        
+    //         errorContainer.insertAdjacentHTML('beforeend', message);
+    // }
+    
+
 }
 
 function refreshTeam(){
     let refreshContainer = document.getElementById('team');
-    refreshContainer.innerHTML = team1.describe();
+    refreshContainer.innerHTML =team1.describe();
 }
