@@ -12,6 +12,8 @@ let team1 = new Team();
 
         team1.teamname = name;
         team1.trainer = trainer;
+
+        console.log('Input player', formEvent);
     })
 
     fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
@@ -61,19 +63,19 @@ function buttonHandler(e){
 
     let listPokémon = team1.roster;
     listPokémon.push(id);
-    refreshTeam();
+    // refreshTeam(); 
 
-    // if (listPokémon < 5){
-    //     refreshTeam();
-    // } else if (listPokémon > 5){
-    //     let errorContainer = document.getElementById('error');
-    //     let message = `
-    //         <h3>ERROR</h3>
-    //         <p>You chose more pokémons than allowed!
-    //         Refresh page and chose again</p>`;
+    if (listPokémon.length < 6){
+        refreshTeam();
+    } else if (listPokémon.length >= 6){
+        let errorContainer = document.getElementById('error');
+        let message = `
+            <h3>ERROR</h3>
+            <p>You chose more pokémons than allowed!
+            Refresh page and chose again</p>`;
         
-    //         errorContainer.insertAdjacentHTML('beforeend', message);
-    // }
+            errorContainer.insertAdjacentHTML('beforeend', message);
+    }
     
 
 }
