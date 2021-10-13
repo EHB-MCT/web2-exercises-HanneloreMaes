@@ -26,12 +26,22 @@ function searchMovie(inputTitles,inputYears){
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                    <h5 class="title">${data.Title}</h5>
-                    <p class="director">${data.Director}</p>
-                    <p class="plot">${data.Plot}</p>
-                    <p class="runtime"><small class="text-muted">${data.Runtime}</small></p>
+                        <h5 class="title">${data.Title}</h5>
+                        <p class="director">${data.Director}</p>
+                        <p class="plot">${data.Plot}</p>
+                        <p class="runtime"><small class="text-muted">${data.Runtime}</small></p>
                     </div>
-                </div>`;
+                </div>
+                <button type="button" class="btn" id="${data.imdbID}">+</button>`;
+        
         containerInfo.insertAdjacentHTML('beforeend', htmlString);
+        let addCounter = document.getElementById(`${data.imdbID}`).addEventListener('click', e =>{
+            e.preventDefault();
+            let containerCounter = document.getElementById('counter');
+            let counterString = `<h3 class="title">${data.Runtime}</h5>`;
+
+            containerCounter.insertAdjacentHTML('beforeend', counterString);
+        });
+        console.log('Druk');
     });
 }
