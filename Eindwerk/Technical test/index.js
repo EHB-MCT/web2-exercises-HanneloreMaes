@@ -1,5 +1,14 @@
 "use strict";
 
+window.onload = function(){
+    let submitForm = document.getElementById("searchform").addEventListener("submit", e => {
+        e.preventDefault();
+        let inputPlaces = document.getElementById("inputPlace").value;
+        geoTracker(inputPlaces);
+    })
+}
+
+
 // special galaxy api => ophalen notificaties 
 // https://api.nasa.gov/ => Coronal Mass Ejection (CME)
 
@@ -24,9 +33,10 @@ fetch(`https://api.nasa.gov/DONKI/notifications?startDate=2014-05-01&endDate=201
 });
 
 
+function geoTracker(inputPlaces){
     // data moon and sun: geotracker
     // https://ipgeolocation.io/documentation/astronomy-api.html
-    fetch(`https://api.ipgeolocation.io/astronomy?apiKey=beb03411ca57456b8140cb4d08c8086d`, {
+    fetch(`https://api.ipgeolocation.io/astronomy?apiKey=beb03411ca57456b8140cb4d08c8086d&location=${inputPlaces}`, {
         method: "GET"
     })
     .then(response => response.json())
@@ -48,6 +58,8 @@ fetch(`https://api.nasa.gov/DONKI/notifications?startDate=2014-05-01&endDate=201
                 </div>`;
         container4.insertAdjacentHTML('beforeend', stringHTML4);
     })
+}
+    
 
     // solar bodies api => solar objects with name en when discovered
     //https://api.le-systeme-solaire.net/en/
