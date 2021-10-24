@@ -83,24 +83,44 @@ function geoTracker(inputPlaces){
     });
 
 
-//     // geo location api => weather ad location
-//     //https://dev.qweather.com/en/help/data/
-//     // fetch(`https://devapi.qweather.com/v7/astronomy/moon?location=1E98E&date=20210220&lang=en&key=12334567890ABC`)
-//     // .then(response => response.json())
-//     // .then(data => {
-//     //     console.log('Succes Moon api', data);
-//     //     // let timeSun = data.results;
-//     //     // let container = document.getElementById('api4');
-//     //     // let stringHTML = `
-//     //     //         <div class="col-md-8">
-//     //     //             <h2>Sun times </h2>
-//     //     //             <div class="card-body">
-//     //     //                 <h5 class="title">${timeSun.sunset}</h5>
-//     //     //                 <p class="director">${timeSun.sunrise}</p>
-//     //     //             </div>
-//     //     //         </div>`;
-//     //     // container.insertAdjacentHTML('beforeend', stringHTML);
-//     // });
+    const applicationId = '75984ac7-bbf1-415d-b767-7ce18ea523f2';
+    const applicationSecret = '81e368486d9d82b3e3551fb553c948f9ccb5a46d351bf074a8d331d469220a4f1efdbd9e81f685daad2adcbcede312a25a6f209a89640b802e70011589bd677c6d90cf7bfec54bab199df9012596d1d30a0e0a09e633d929aa906128d5cbe116ccb8ab6b8dbea93441c6d8ea4d19c521';
+    const hash = btoa(`${applicationId}:${applicationSecret}`);
+    // console.log('Hellow', hash);
+    fetch(`https://api.astronomyapi.com/api/v2/studio/moon-phase`,{
+        method: 'Post',
+        headers: {
+            "Authorization": "Basic <hash>", 
+            //'Authorization': "Basic <hash>",
+        },
+        body: {
+            "format": "png",
+            "style": {
+                "moonStyle": "default",
+                "backgroundStyle": "stars",
+                "backgroundColor": "red",
+                "headingColor": "white",
+                "textColor": "red"
+            },
+            "view": {
+                "type": "portrait-simple"
+            }
+        }
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
