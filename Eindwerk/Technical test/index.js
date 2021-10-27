@@ -83,76 +83,23 @@ function geoTracker(inputPlaces){
     });
 
 
+
+
     const applicationId = '75984ac7-bbf1-415d-b767-7ce18ea523f2';
     const applicationSecret = '81e368486d9d82b3e3551fb553c948f9ccb5a46d351bf074a8d331d469220a4f1efdbd9e81f685daad2adcbcede312a25a6f209a89640b802e70011589bd677c6d90cf7bfec54bab199df9012596d1d30a0e0a09e633d929aa906128d5cbe116ccb8ab6b8dbea93441c6d8ea4d19c521';
     const hash = btoa(`${applicationId}:${applicationSecret}`);
-    // console.log('Hellow', hash);
-    fetch(`https://api.astronomyapi.com/api/v2/studio/moon-phase`,{
-        method: 'Post',
+    //console.log('Hellow', hash);
+
+    fetch(`https://api.astronomyapi.com/api/v2/bodies/positions/:bodies`,{
         headers: {
-            "Authorization": "Basic <hash>", 
-            //'Authorization': "Basic <hash>",
+            'Authorization': 'Basic <hash>',
         },
-        body: {
-            "format": "png",
-            "style": {
-                "moonStyle": "default",
-                "backgroundStyle": "stars",
-                "backgroundColor": "red",
-                "headingColor": "white",
-                "textColor": "red"
-            },
-            "view": {
-                "type": "portrait-simple"
-            }
-        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Astronomy Data", data)
     })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // //https://docs.astronomyapi.com/endpoints/bodies
-    // //https://docs.astronomyapi.com/v/v2/
-
-    //const hash = btoa(`${applicationId}:${applicationSecret}`);
-    // fetch(`https://api.astronomyapi.com/api/`, {
-    //     "apiEndpoint": "https://api.astronomyapi.com",
-    //     "appId": "905f504d-c3ff-47c0-a807-fdc02438a59f",
-    //     "appSecret": "81e368486d9d82b3e3551fb553c948f9ccb5a46d351bf074a8d331d469220a4f1efdbd9e81f685daad2adcbcede312a25a6f209a89640b802e70011589bd677c3acf4bf1ff07e9d52272f69267d706174cbf68763fe9cdc70b051431ff0ae533b506404f8467ecdf43853637acf48c90"
-    //     // method: 'GET',
-    //     // headers: {
-    //     //     'Authorization': 'Basic <hash>'
-    //     // },
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //     console.log('Succes Stars api', data.message);
-    //     let star = data;
-    //         let container = document.getElementById('api5');
-    //         let stringHTML = `
-    //             <div class="col-md-8">
-    //                 <div class="card-body">
-    //                     <p class="director">${star.message}</p>
-    //                 </div>
-    //             </div>`;
-    //     container.insertAdjacentHTML('beforeend', stringHTML);
-    // })
-    
     
 // // sun api => ophalen sunset & sunrise
 // //https://sunrise-sunset.org/api
@@ -172,33 +119,7 @@ function geoTracker(inputPlaces){
 //                 </div>`;
 //         container2.insertAdjacentHTML('beforeend', stringHTML2);
 //     });
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+      
     
 //  // weather api -> ophalen plaats en weer 
 // // https://openweathermap.org/current
