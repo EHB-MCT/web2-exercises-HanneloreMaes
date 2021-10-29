@@ -90,7 +90,7 @@ function geoTracker(inputPlaces){
     const hash = btoa(`${applicationId}:${applicationSecret}`);
     //console.log('Hellow', hash);
 
-    fetch(`https://api.astronomyapi.com/api/v2/bodies/positions/:bodies`,{
+    fetch(`https://api.astronomyapi.com/api/v2/bodies/`,{
         headers: {
             'Authorization': 'Basic <hash>',
         },
