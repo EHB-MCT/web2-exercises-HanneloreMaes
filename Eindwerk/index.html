@@ -6,8 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eindwerk Hannelore</title>
     <link rel="stylesheet" href="./index.css">
+    
+    <!-- https://virtualsky.lco.global/ -->
+    <!--[if IE]><script src="excanvas.min.js"></script><![endif]-->
+    <script src="./VirtualSky/VirtualSky-gh-pages/stuquery.min.js"></script>
+	<script src="./VirtualSky/VirtualSky-gh-pages/virtualsky.js" type="module"></script>
+	<script src="./VirtualSky/VirtualSky-gh-pages/geo/virtualsky-geo.js" type="module"></script>
+    <script type="module">
+        var planetarium;
+        S(document).ready(function() {
+            planetarium = S.virtualsky({
+                'id': 'starmap',
+                'projection': 'gnomic',
+                'ra': 83.8220833,
+                'dec': -5.3911111,
+                'ground': false,
+                'constellations': true,
+                'constellationlabels': true,
+                'fov': 100
+            });
+        });
+        </script>
+    <!-- https://virtualsky.lco.global/ -->
+    <script src="./index.js" type="text/javascript"></script>
+  
 </head>
 <body>
+    <div id="starmap" style="width:100%;height:500px;"></div>
     <div class="weatherRight"></div>
     <div class="imgSky"></div>
     <div class="infoCenter"></div>
