@@ -2,7 +2,7 @@ var planetarium;
         S(document).ready(function() {
             planetarium = S.virtualsky({
                 'id': 'starmap',
-                'projection': 'gnomic',
+                'projection': 'stereo',
                 'ground': true,
                 'gradient': true,
                 'constellations': true,
@@ -13,7 +13,7 @@ var planetarium;
                 'live': true,
                 'fov': 200,
                 'gridlines_az': true,
-                'ra': 108.0000000,
-                'dec': 35.0000000,
+                // 'ra': 108.0000000,
+                // 'dec': 35.0000000,
             });
         });
