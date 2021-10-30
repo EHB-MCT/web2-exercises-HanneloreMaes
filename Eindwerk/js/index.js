@@ -43,7 +43,7 @@ function geoTracker(inputPlaces){
     .then(data => {
         console.log("Succes Location API", data);
 
-        let container4 = document.getElementById('api4');
+        let container4 = document.getElementById('api2');
         let stringHTML4 = `
                 <div class="col-md-8">
                     <h2>GEOlocation</h2>
@@ -68,7 +68,7 @@ function geoTracker(inputPlaces){
     .then(data => {
         console.log('Succes Horoscope api', data);
         let star = data.bodies[129];
-            let container5 = document.getElementById('api5');
+            let container5 = document.getElementById('api3');
             let stringHTML5 = `
                 <div class="col-md-8">
                 <h2>Special Stars with name</h2>
