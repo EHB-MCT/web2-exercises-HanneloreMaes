@@ -10,10 +10,8 @@ var planetarium;
                 'showplanets': true,
                 'showplanetslabels': true,
                 'showstars': true,
-                'live': true,
-                'fov': 200,
-                'gridlines_az': true,
-                // 'ra': 108.0000000,
-                // 'dec': 35.0000000,
+                'showstarlabels': true,
+                // 'live': true,
+                'gridlines_az': true
             });
         });

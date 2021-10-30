@@ -54,6 +54,8 @@
 		fontfamily - set the font family using a CSS style font-family string otherwise it inherits from the container element
 		objects - a semi-colon-separated string of recognized object names to display e.g. "M1;M42;Horsehead Nebula" (requires internet connection)
 */
+
+import LocationTracker from '../../js/getLocation.js';
 (function (S) {
 
 /*@cc_on
@@ -2361,10 +2363,13 @@ VirtualSky.prototype.drawImmediate = function(proj){
 		clockstring = this.clock.toLocaleDateString(this.langcode,{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })+' '+this.clock.toLocaleTimeString(this.langcode);
 		metric_clock = this.drawText(clockstring,this.padding,this.padding+fontsize);
 	}
-
+ 
 	// Position line
 	if(this.showposition){
-		positionstring = Math.abs(this.latitude.deg).toFixed(2) + ((this.latitude.rad>0) ? this.getPhrase('N') : this.getPhrase('S')) + ', ' + Math.abs(this.longitude.deg).toFixed(2) + ((this.longitude.rad>0) ? this.getPhrase('E') : this.getPhrase('W'));
+		positionstring = new LocationTracker();
+		
+		console.log('Test', positionstring);
+		//positionstring = Math.abs(this.latitude.deg).toFixed(2) + ((this.latitude.rad>0) ? this.getPhrase('N') : this.getPhrase('S')) + ', ' + Math.abs(this.longitude.deg).toFixed(2) + ((this.longitude.rad>0) ? this.getPhrase('E') : this.getPhrase('W'));
 		metric_pos = this.drawText(positionstring,this.padding,this.padding+fontsize+fontsize);
 	}
 
