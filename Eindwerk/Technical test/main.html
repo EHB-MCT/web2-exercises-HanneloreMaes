@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testen API</title>
-    <script src="./api-tests.js"></script>
+    <script src="./api-tests.js" type="module"></script>
+    <script type ="module" src="./main2.js"></script>
 </head>
 
 <body>
@@ -14,11 +15,15 @@
         <input type="text" class="form-control" id="inputPlace" placeholder="Antwerp, Brussels, ...">
         <button type="submit" id="btn">Search</button>
     </form>
-
     <div id="api1"></div>
     <div id="api2"></div>
     <div id="api3"></div>
     <div id="api4"></div>
     <div id="api5"></div>
+
+    <div class="getLocation">
+        <button id="getLocation">Get My Location</button>
+        <div id="textContainer"></div>
+    </div>
 </body>
 </html>

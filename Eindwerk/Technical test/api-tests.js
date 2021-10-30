@@ -1,5 +1,7 @@
 "use strict";
 
+import LocationFinder from './Location.js';
+
 window.onload = function(){
     let submitForm = document.getElementById("searchform").addEventListener("submit", e => {
         e.preventDefault();
@@ -35,7 +37,9 @@ fetch(`https://api.nasa.gov/DONKI/notifications?startDate=2014-05-01&endDate=201
             
 function omzettingPlace(inputPlaces){
     //https://developer.mapquest.com/documentation/open/geocoding-api/
-    fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`)
+    fetch(`http://www.mapquestapi.com/geocoding/v1/reverse?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`, {
+
+    })
     .then(response =>response.json())
     .then(data => {
         console.log('Omzetting', data);
