@@ -19,15 +19,48 @@
 </head>
 <body>
     <div id="starmap"></div>
-    <div id="overlayContainer"></div>
-    <!-- <form id="searchform"> 
-        <input type="text" class="form-control" id="inputPlace" placeholder="Antwerp, Brussels, ...">
-        <button type="submit" id="btn">Search</button>
-    </form>
-    
-    <div id="api1"></div>
-    <div id="api2"></div>
-    <div id="api3"></div> -->
+
+    <div id="overlayContainer">
+
+        <form id="searchform"> 
+            <input type="text" class="form-control" id="inputPlace" placeholder="Antwerp, Brussels, ...">
+            <button type="submit" id="btn">Search</button>
+        </form>
+
+        <div id="infoContainerPlace">
+            <h2 id="locationOfCity"></h2>
+            <p id="clock"></p>
+            <p id="temperature"></p>
+            <div id="conditionWeather">
+                <p id="iconWeather"></p>
+                <p id="weatherConditionName"></p>
+            </div>
+        </div>
+
+        <div id="placeToSeeStars">
+            <div class="placeToSeeStarsontainer">
+                <h2 id="locationNearbyCity"></h2>
+                <div id="conditionWeather">
+                    <p id="iconWeather"></p>
+                    <p id="weatherConditionName"></p>
+                </div>
+                <p id="clock"></p>
+                <p id="temperature"></p>
+                <button id="goToNearbyPlace"></button>
+            </div>
+        </div>
+
+        <div id="weatherRightMenu">
+            <div class="weatherRightMenuBlock">
+                <div id="conditionWeather">
+                    <p id="iconWeather"></p>
+                    <p id="weatherConditionName"></p>
+                </div>
+                <p id="clock"></p>
+                <p id="temperature"></p>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
