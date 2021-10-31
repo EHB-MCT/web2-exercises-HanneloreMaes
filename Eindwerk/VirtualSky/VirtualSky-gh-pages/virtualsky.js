@@ -57,7 +57,6 @@
 
 import LocationTracker from '../../js/getLocation.js';
 (function (S) {
-
 /*@cc_on
 // Fix for IE's inability to handle arguments to setTimeout/setInterval
 // From http://webreflection.blogspot.com/2007/06/simple-settimeout-setinterval-extra.html
@@ -67,6 +66,19 @@ import LocationTracker from '../../js/getLocation.js';
 })(function(f){return function(c,t){var a=[].slice.call(arguments,2);return f(function(){c.apply(this,a)},t)}});
 @*/
 // Define a shortcut for checking variable types
+
+
+
+
+
+
+// function locationCallBack(location) {
+// 	console.log("we got a location", location)
+// }
+
+
+
+
 function is(a,b){return typeof a===b;}
 function isEventSupported(eventName) {
     var el = document.createElement('div');
@@ -2366,7 +2378,7 @@ VirtualSky.prototype.drawImmediate = function(proj){
  
 	// Position line
 	if(this.showposition){
-		positionstring = new LocationTracker();
+			positionstring = new LocationTracker();
 		
 		console.log('Test', positionstring);
 		//positionstring = Math.abs(this.latitude.deg).toFixed(2) + ((this.latitude.rad>0) ? this.getPhrase('N') : this.getPhrase('S')) + ', ' + Math.abs(this.longitude.deg).toFixed(2) + ((this.longitude.rad>0) ? this.getPhrase('E') : this.getPhrase('W'));
