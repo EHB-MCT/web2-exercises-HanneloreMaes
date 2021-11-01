@@ -1,6 +1,6 @@
 /* https://virtualsky.lco.global/ */
 * { 
-    overflow-y: hidden; 
+    overflow: hidden; 
 	font-family: Helvetica, sans-serif;
 	color: black;
 	height: 100%;
@@ -9,6 +9,7 @@
 body {
 	margin: 0px;
 	padding: 0px;
+	position: relative;
 }
 #starmap { 
 	z-index: 1;
@@ -42,18 +43,22 @@ body {
     height: 128px; 
 }
 #overlayContainer{
-	width: 100%;
 	margin: 0px;
 	padding: 0px;
-	display: flex;
 	position: absolute;
 	z-index: 2;
 }
-#searchform{
-	width: 100%;
+#containerForm{
 	height: 4%;
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+	z-index: 2;
 	display: flex;
-	align-items: flex-end;
-
+	align-content: flex-end;
+}
+#searchform.input{
+	border: 0px;
+	padding: 0px 0px 0px 2px;
 }
 /* https://virtualsky.lco.global/ */
