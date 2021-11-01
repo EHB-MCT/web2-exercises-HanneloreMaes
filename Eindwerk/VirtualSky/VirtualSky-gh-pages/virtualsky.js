@@ -2378,10 +2378,9 @@ VirtualSky.prototype.drawImmediate = function(proj){
  
 	// Position line
 	if(this.showposition){
-			positionstring = new LocationTracker();
-		
-		console.log('Test', positionstring);
-		//positionstring = Math.abs(this.latitude.deg).toFixed(2) + ((this.latitude.rad>0) ? this.getPhrase('N') : this.getPhrase('S')) + ', ' + Math.abs(this.longitude.deg).toFixed(2) + ((this.longitude.rad>0) ? this.getPhrase('E') : this.getPhrase('W'));
+		// positionstring = new LocationTracker();
+		// console.log('Test', positionstring);
+		positionstring = Math.abs(this.latitude.deg).toFixed(2) + ((this.latitude.rad>0) ? this.getPhrase('N') : this.getPhrase('S')) + ', ' + Math.abs(this.longitude.deg).toFixed(2) + ((this.longitude.rad>0) ? this.getPhrase('E') : this.getPhrase('W'));
 		metric_pos = this.drawText(positionstring,this.padding,this.padding+fontsize+fontsize);
 	}
 
