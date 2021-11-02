@@ -47,18 +47,22 @@ body {
 	padding: 0px;
 	position: absolute;
 	z-index: 2;
+	width: 100%;
+	height: 8%;
 }
 #containerForm{
-	height: 4%;
+	display: flex;
+	justify-content: flex-end;
 	margin: 0px;
 	padding: 0px;
-	position: absolute;
 	z-index: 2;
-	display: flex;
-	align-content: flex-end;
+	margin: 1% 1% 0% 0%;
+}
+#searchform{
+	height: 50%;
 }
 #searchform.input{
 	border: 0px;
-	padding: 0px 0px 0px 2px;
+	padding: 0px 0px 2px 2px;
 }
 /* https://virtualsky.lco.global/ */
