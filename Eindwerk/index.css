@@ -1,4 +1,4 @@
-/* https://virtualsky.lco.global/ */
+/* https://virtualsky.lco.global/  begin*/
 * { 
     overflow: hidden; 
 	font-family: Helvetica, sans-serif;
@@ -39,23 +39,25 @@ body {
 	color: white;
 }
 #virtualskyinfobox img { 
-    width: 128px; 
+	width: 128px; 
     height: 128px; 
 }
+/* https://virtualsky.lco.global/ eind*/
+
 #overlayContainer{
+	z-index: 2;
 	margin: 0px;
 	padding: 0px;
 	position: absolute;
 	z-index: 2;
 	width: 100%;
-	height: 8%;
+	height: auto;
 }
 #containerForm{
 	display: flex;
 	justify-content: flex-end;
 	margin: 0px;
 	padding: 0px;
-	z-index: 2;
 	margin: 1% 1% 0% 0%;
 }
 #searchform{
@@ -65,4 +67,11 @@ body {
 	border: 0px;
 	padding: 0px 0px 2px 2px;
 }
-/* https://virtualsky.lco.global/ */
+
+#weatherRightMenuBlock{
+	display: flex;
+	justify-content: flex-end;
+}
+#weatherConditionName, #temperature, #clock{
+	color: white;
+}

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eindwerk Hannelore</title>
     <link rel="stylesheet" href="./index.css">
+    <script src="./js/index.js" type="text/javascript"></script>
     <script type="module" src="./js/getLocation.js"></script>
     <!-- https://virtualsky.lco.global/ -->
     <!--[if IE]><script src="excanvas.min.js"></script><![endif]-->
@@ -14,7 +15,6 @@
 	<script src="./VirtualSky/VirtualSky-gh-pages/geo/virtualsky-geo.js" type="module"></script>
     <script type="module" src="./js/planetarium.js"></script>
     <!-- https://virtualsky.lco.global/ -->
-    <script src="./js/index.js" type="text/javascript"></script>
 </head>
 <body>
     
@@ -25,7 +25,19 @@
                 <button type="submit" id="btn">Search</button>
             </form>
         </div>
-        <div id="infoContainerPlace">
+
+        <div id="weatherRightMenu">
+            <div id="weatherRightMenuBlock">
+                <img src="" alt="">
+                <!-- <div id="conditionWeather">
+                    <p id="iconWeather"></p>
+                    <p id="weatherConditionName"></p>
+                </div>
+                <p id="clock"></p>
+                <p id="temperature"></p> -->
+            </div>
+        </div>
+        <!-- <div id="infoContainerPlace">
             <h2 id="locationOfCity"></h2>
             <p id="clock"></p>
             <p id="temperature"></p>
@@ -46,18 +58,8 @@
                 <p id="temperature"></p>
                 <button id="goToNearbyPlace"></button>
             </div>
-        </div>
+        </div> -->
         
-        <div id="weatherRightMenu">
-            <div class="weatherRightMenuBlock">
-                <div id="conditionWeather">
-                    <p id="iconWeather"></p>
-                    <p id="weatherConditionName"></p>
-                </div>
-                <p id="clock"></p>
-                <p id="temperature"></p>
-            </div>
-        </div>
     </div>
     <div id="starmap"></div>
     

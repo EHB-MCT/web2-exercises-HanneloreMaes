@@ -5,42 +5,103 @@ window.onload = function(){
         e.preventDefault();
         let inputPlaces = document.getElementById("inputPlace").value;
         console.log('Plaats', inputPlaces);
-    })
+        getWeather(inputPlaces);
+    });
+   
+};
+
+async function getWeather(city) {
+    let lat = 50.74645;
+    let lon =4.35754;
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=8532eda8a091632f5428caff44d04e73&units=metric`)
+    .then(response => response.json())
+    .then(data => {
+        console.log('Succes', data);
+        let weatherInfo = data.hourly;
+        console.log('Info', weatherInfo);
+        weatherInfo.forEach(weatherData => {
+            let newData = new Date(weatherData.dt*1000);
+            console.log('Data', newData);
+            let containerWeather = document.getElementById('weatherRightMenu');
+            let htmlWeather = `
+                <div id="weatherRightMenuBlock">
+                    <div id="conditionWeather">
+                        <img src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png" alt="icon-weather-condition">
+                        <p id="weatherConditionName">${weatherData.weather[0].description}</p>
+                    </div>
+                    <p id="clock">${newData}</p>
+                    <p id="temperature">${weatherData.temp}°C</p>
+                </div>`;
+            containerWeather.insertAdjacentHTML('beforeend', htmlWeather);
+        })
+            //let newData = new Date(weatherInfo.dt*1000-(weatherInfo.timezone*1000));
+        });
+    // fetch(`http://api.openweathermap.org/data/2.5/weather?q=London&APPID=8532eda8a091632f5428caff44d04e73&units=metric`)
+    // .then(response => {return response.json()})
+    // .then(data => {
+    //     console.log("Succes", data);
+    //     console.log("Minus",new Date(data.dt*1000-(data.timezone*1000))); // minus 
+    //     console.log("Plus", new Date(data.dt*1000+(data.timezone*1000))); // plus
+    //     let weatherInfo = data;
+    //         //let newData = new Date(weatherInfo.dt*1000-(weatherInfo.timezone*1000));
+    //         console.log('Condition', weatherInfo.weather[0].main);
+    //         console.log('Temp', weatherInfo.main.temp);
+    //         let containerWeather = document.getElementById('weatherRightMenuBlock');
+    //         let htmlWeather = `
+    //             <div id="conditionWeather">
+    //                 <p id="iconWeather">${weatherInfo.weather[0].icon}</p>
+    //                 <p id="weatherConditionName">${weatherInfo.weather[0].main}</p>
+    //             </div>
+    //             <p id="clock"></p>
+    //             <p id="temperature">${weatherInfo.main.temp}°C</p>`;
+    //         containerWeather.insertAdjacentHTML('beforeend', htmlWeather);
+    // });
 }
 
 
-
-// window.onload = function(){
-//     let submitForm = document.getElementById("searchform").addEventListener("submit", e => {
-//         e.preventDefault();
-//         let inputPlaces = document.getElementById("inputPlace").value;
-//         geoTracker(inputPlaces);
-//     })
-// }
-
-
-// // special galaxy api => ophalen notificaties 
-// // https://api.nasa.gov/ => Coronal Mass Ejection (CME)
-
-// fetch(`https://api.nasa.gov/DONKI/notifications?startDate=2014-05-01&endDate=2014-05-08&type=all&api_key=3mLhSkJOLNh6zUKdf7aUjI9roVHmNMdANf2ziKoK`)
-// .then(response => response.json())
-// .then(data => {
-//     console.log('Succes Nasa', data);
-//     let galaxy = data[0];
-//     //console.log('URL', galaxy.messageBody);
-
-//     let container1 = document.getElementById('api1');
-//     let stringHTML1 = `
-//         <div class="col-md-8">
-//             <h2>Special galaxy stuff </h2>
-//             <div class="card-body">
-//                 <h5 class="title">${galaxy.messageType}</h5>
-//                 <p class="director">${galaxy.messageIssueTime}</p>
-//                 <p class="plot">${galaxy.messageBody}</p>
+// function weather(inputPlaces){
+//     // weather api -> ophalen plaats en weer 
+//     // https://openweathermap.org/current
+//     fetch(`api.openweathermap.org/data/2.5/weather?q=${inputPlaces}&appid={8532eda8a091632f5428caff44d04e73}`)
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log('Succes Weathermap', data);
+//         let containerWeather = document.getElementById('weatherRightMenuBlock');
+//         let htmlWeather = `
+//             <div id="conditionWeather">
+//                     <p id="iconWeather"></p>
+//                     <p id="weatherConditionName"></p>
 //             </div>
-//         </div>`;
-//     container1.insertAdjacentHTML('beforeend', stringHTML1);
-// });
+//                 <p id="clock"></p>
+//                 <p id="temperature"></p>`;
+//     });
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // function geoTracker(inputPlaces){
