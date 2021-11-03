@@ -54,8 +54,6 @@
 		fontfamily - set the font family using a CSS style font-family string otherwise it inherits from the container element
 		objects - a semi-colon-separated string of recognized object names to display e.g. "M1;M42;Horsehead Nebula" (requires internet connection)
 */
-
-import LocationTracker from '../../js/getLocation.js';
 (function (S) {
 /*@cc_on
 // Fix for IE's inability to handle arguments to setTimeout/setInterval
@@ -2292,6 +2290,28 @@ VirtualSky.prototype.draw = function(){
 	this.pendingRefresh = window.setTimeout(this.drawImmediate.bind(this), 20);
 };
 
+// VirtualSky.prototype.location = function(){
+// 	if (navigator.geolocation) {
+// 		navigator.geolocation.getCurrentPosition((position) => {
+// 		  const lat = position.coords.latitude;
+// 		  const lon = position.coords.longitude;
+// 		  fetch(`https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=cf2adb444cd94e24ab41876ff1f5272f`)
+// 		  .then(response => response.json())
+// 		  .then(data => {
+// 			  console.log('Succes', data.results);
+// 			  let locatie = data.results;
+// 			  let town = locatie.map(obj => obj.components.town);
+// 			  console.log('this.location', town);
+// 			  this.test = town;
+// 			  console.log("h", this.test)
+// 			  return this.test
+			
+// 		  });
+// 		  console.log("this.test", this.test);
+// 		});
+// 	  }
+// }
+
 VirtualSky.prototype.drawImmediate = function(proj){
 	// Don't bother drawing anything if there is no physical area to draw on
 	if(this.pendingRefresh !== undefined){
@@ -2378,11 +2398,9 @@ VirtualSky.prototype.drawImmediate = function(proj){
  
 	// Position line
 	if(this.showposition){
-		positionstring = new LocationTracker();
-		positionstring.getData();
-		console.log("d", );
-		console.log('Test', positionstring);
-		//positionstring = Math.abs(this.latitude.deg).toFixed(2) + ((this.latitude.rad>0) ? this.getPhrase('N') : this.getPhrase('S')) + ', ' + Math.abs(this.longitude.deg).toFixed(2) + ((this.longitude.rad>0) ? this.getPhrase('E') : this.getPhrase('W'));
+		//positionstring = location.test;
+		//console.log('positionString', positionstring);
+		positionstring = Math.abs(this.latitude.deg).toFixed(2) + ((this.latitude.rad>0) ? this.getPhrase('N') : this.getPhrase('S')) + ', ' + Math.abs(this.longitude.deg).toFixed(2) + ((this.longitude.rad>0) ? this.getPhrase('E') : this.getPhrase('W'));
 		metric_pos = this.drawText(positionstring,this.padding,this.padding+fontsize+fontsize);
 	}
 
@@ -3277,6 +3295,7 @@ VirtualSky.prototype.setGeo = function(pos){
 
 // Input: latitude (deg)
 VirtualSky.prototype.setLatitude = function(l){
+	
 	this.latitude = {'deg':parseFloat(l),'rad':inrangeEl(parseFloat(l)*this.d2r)};
 	return this;
 };
