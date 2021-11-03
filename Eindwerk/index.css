@@ -1,6 +1,5 @@
 /* https://virtualsky.lco.global/  begin*/
 * { 
-    overflow: hidden; 
 	font-family: Helvetica, sans-serif;
 	color: black;
 	height: 100%;
@@ -12,10 +11,11 @@ body {
 	position: relative;
 }
 #starmap { 
+	overflow: hidden; 
 	z-index: 1;
     height: 100%;
     width:100%; 
-    position: relative; 
+    position: relative;
 }
 #virtualskyinfobox{
 	font-size: 12px;
@@ -71,7 +71,35 @@ body {
 #weatherRightMenuBlock{
 	display: flex;
 	justify-content: flex-end;
+	overflow-y: hidden;
 }
 #weatherConditionName, #temperature, #clock{
 	color: white;
+	font-size: 22pt;
+}
+#weatherConditionName, #temperature{
+	font-size: 16pt;
+}
+
+.iconWeather{
+	width: 200px;
+  	height: auto;
+}
+#conditionWeather{
+	display: flex;
+	justify-content: space-evenly;
+}
+#columnText{
+	display: flex;
+	flex-direction: column;
+}
+
+
+
+.parallax{
+	background-attachment: scroll;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }

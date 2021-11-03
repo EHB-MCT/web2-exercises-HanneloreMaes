@@ -25,12 +25,14 @@ async function getWeather(city) {
             let containerWeather = document.getElementById('weatherRightMenu');
             let htmlWeather = `
                 <div id="weatherRightMenuBlock">
-                    <div id="conditionWeather">
-                        <img src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png" alt="icon-weather-condition">
-                        <p id="weatherConditionName">${weatherData.weather[0].description}</p>
+                    <img class="iconWeather" src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png" alt="icon-weather-condition">
+                    <div id="columnText">
+                        <p id="clock">${newData}</p>
+                        <div id="conditionWeather">
+                            <p id="temperature">${weatherData.temp}°C</p>
+                            <p id="weatherConditionName">${weatherData.weather[0].description}</p>
+                        </div>
                     </div>
-                    <p id="clock">${newData}</p>
-                    <p id="temperature">${weatherData.temp}°C</p>
                 </div>`;
             containerWeather.insertAdjacentHTML('beforeend', htmlWeather);
         })
@@ -58,24 +60,6 @@ async function getWeather(city) {
     // });
 }
 
-
-// function weather(inputPlaces){
-//     // weather api -> ophalen plaats en weer 
-//     // https://openweathermap.org/current
-//     fetch(`api.openweathermap.org/data/2.5/weather?q=${inputPlaces}&appid={8532eda8a091632f5428caff44d04e73}`)
-//     .then(response => response.json())
-//     .then(data => {
-//         console.log('Succes Weathermap', data);
-//         let containerWeather = document.getElementById('weatherRightMenuBlock');
-//         let htmlWeather = `
-//             <div id="conditionWeather">
-//                     <p id="iconWeather"></p>
-//                     <p id="weatherConditionName"></p>
-//             </div>
-//                 <p id="clock"></p>
-//                 <p id="temperature"></p>`;
-//     });
-// };
 
 
 
