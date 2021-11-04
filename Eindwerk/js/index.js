@@ -10,10 +10,11 @@ window.onload = function(){
    
 };
 
-async function getWeather(city) {
+async function getWeather(inputPlaces) {
     let lat = 50.74645;
     let lon =4.35754;
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=8532eda8a091632f5428caff44d04e73&units=metric`)
+    // lat=${lat}&lon=${lon}
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?q=${inputPlaces}&appid=8532eda8a091632f5428caff44d04e73&units=metric`)
     .then(response => response.json())
     .then(data => {
         console.log('Succes', data);
@@ -21,7 +22,6 @@ async function getWeather(city) {
         console.log('Info', weatherInfo);
         weatherInfo.forEach(weatherData => {
             let newData = new Date(weatherData.dt*1000);
-            console.log('Data', newData);
             let containerWeather = document.getElementById('weatherRightMenu');
             let htmlWeather = `
                 <div id="weatherRightMenuBlock">
@@ -37,27 +37,7 @@ async function getWeather(city) {
             containerWeather.insertAdjacentHTML('beforeend', htmlWeather);
         })
             //let newData = new Date(weatherInfo.dt*1000-(weatherInfo.timezone*1000));
-        });
-    // fetch(`http://api.openweathermap.org/data/2.5/weather?q=London&APPID=8532eda8a091632f5428caff44d04e73&units=metric`)
-    // .then(response => {return response.json()})
-    // .then(data => {
-    //     console.log("Succes", data);
-    //     console.log("Minus",new Date(data.dt*1000-(data.timezone*1000))); // minus 
-    //     console.log("Plus", new Date(data.dt*1000+(data.timezone*1000))); // plus
-    //     let weatherInfo = data;
-    //         //let newData = new Date(weatherInfo.dt*1000-(weatherInfo.timezone*1000));
-    //         console.log('Condition', weatherInfo.weather[0].main);
-    //         console.log('Temp', weatherInfo.main.temp);
-    //         let containerWeather = document.getElementById('weatherRightMenuBlock');
-    //         let htmlWeather = `
-    //             <div id="conditionWeather">
-    //                 <p id="iconWeather">${weatherInfo.weather[0].icon}</p>
-    //                 <p id="weatherConditionName">${weatherInfo.weather[0].main}</p>
-    //             </div>
-    //             <p id="clock"></p>
-    //             <p id="temperature">${weatherInfo.main.temp}°C</p>`;
-    //         containerWeather.insertAdjacentHTML('beforeend', htmlWeather);
-    // });
+    });
 }
 
 
@@ -86,6 +66,64 @@ async function getWeather(city) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // fetch(`http://api.openweathermap.org/data/2.5/weather?q=London&APPID=8532eda8a091632f5428caff44d04e73&units=metric`)
+    // .then(response => {return response.json()})
+    // .then(data => {
+    //     console.log("Succes", data);
+    //     console.log("Minus",new Date(data.dt*1000-(data.timezone*1000))); // minus 
+    //     console.log("Plus", new Date(data.dt*1000+(data.timezone*1000))); // plus
+    //     let weatherInfo = data;
+    //         //let newData = new Date(weatherInfo.dt*1000-(weatherInfo.timezone*1000));
+    //         console.log('Condition', weatherInfo.weather[0].main);
+    //         console.log('Temp', weatherInfo.main.temp);
+    //         let containerWeather = document.getElementById('weatherRightMenuBlock');
+    //         let htmlWeather = `
+    //             <div id="conditionWeather">
+    //                 <p id="iconWeather">${weatherInfo.weather[0].icon}</p>
+    //                 <p id="weatherConditionName">${weatherInfo.weather[0].main}</p>
+    //             </div>
+    //             <p id="clock"></p>
+    //             <p id="temperature">${weatherInfo.main.temp}°C</p>`;
+    //         containerWeather.insertAdjacentHTML('beforeend', htmlWeather);
+    // });
 
 
 // function geoTracker(inputPlaces){
