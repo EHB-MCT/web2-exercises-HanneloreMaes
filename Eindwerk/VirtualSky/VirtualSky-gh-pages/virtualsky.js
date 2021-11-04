@@ -959,8 +959,8 @@ function VirtualSky(input){
 		v+'_help ul { list-style:none;margin:0px;'+p+':0px; } '+
 		v+'_infobox { '+c+':'+a+';color:black;'+p+':5px;'+r+bs+'} '+
 		v+'_infobox img {} '+
-		v+'_infocredit {color:white;float:left;font-size:0.8em;'+p+':5px;position:absolute;} '+
-		v+'form { position:absolute;z-index:20;display:block;overflow:hidden;'+c+':#ddd;'+p+':10px;'+bs+r+' } '+
+		v+'_infocredit {color:white;float:left;font-size:0.8em;'+p+':5px;position:relative;} '+
+		v+'form { position:relative;z-index:20;display:block;overflow:hidden;'+c+':#ddd;'+p+':10px;'+bs+r+' } '+
 		v+'_dismiss { float:right;'+p+': 0 5px 0 5px;margin:0px;font-weight:bold;cursor:pointer;color:black;margin-right:-5px;margin-top:-5px; } '+
 		v+'form input,'+v+'form .divider { display:inline-block;font-size:1em;text-align:center;margin-right:2px; } '+v+'form .divider { margin-top: 5px; '+p+': 2px;} '+
 		v+'button { '+k+':#e9e9e9; width: 1.5em; line-height: 1.5em; color: '+a+'; cursor: pointer; display: block; padding: 0px; text-align: center; color: #000000; font-size: 1em; } '+
@@ -1321,7 +1321,7 @@ VirtualSky.prototype.createSky = function(){
 	this.container = S('#'+this.id);
 	this.times = this.astronomicalTimes();
 
-	if(this.q.debug) S('body').append('<div style="position: absolute;bottom:0px;right:0px;padding: 0.25em 0.5em;background-color:white;color:black;max-width: 50%;" id="debug"></div>');
+	if(this.q.debug) S('body').append('<div style="position: relative;bottom:0px;right:0px;padding: 0.25em 0.5em;background-color:white;color:black;max-width: 50%;" id="debug"></div>');
 	if(this.fntfam) this.container.css({'font-family':this.fntfam});
 	if(this.fntsze) this.container.css({'font-size':this.fntsze});
 
@@ -1782,7 +1782,7 @@ VirtualSky.prototype.toggleInfoBox = function(i){
 		el.html(this.pointers[i].html);
 		var x = Math.round(this.pointers[i].x - Math.round(el.outerWidth()/2))+'px';
 		var y = Math.round(this.pointers[i].y - Math.round(el.outerHeight()/2))+'px';
-		el.css({'position':'absolute','left':x,'top':y,'z-index':10,'display':'block'});
+		el.css({'position':'relative','left':x,'top':y,'z-index':10,'display':'block'});
 	}else{
 		el.css({'display':'none'});
 	}
@@ -1940,7 +1940,7 @@ VirtualSky.prototype.selectProjection = function(proj){
 			var elem = S('.'+this.id+'_projection');
 			elem.on('mouseover',{me:this},function(e){e.data.me.mouseover = true;})
 				.css({
-					'position':'absolute',
+					'position':'relative',
 					'padding':0,
 					'height':'2em',
 					'top':'50%',
@@ -2261,7 +2261,7 @@ VirtualSky.prototype.fontsize = function(){
 	return (m < 600) ? ((m < 500) ? ((m < 350) ? ((m < 300) ? ((m < 250) ? 9 : 10) : 11) : 12) : 14) : parseInt(this.container.css('font-size'));
 };
 VirtualSky.prototype.positionCredit = function(){
-	this.container.find('.'+this.id+'_credit').css({position:'absolute',top:(parseFloat(this.tall)-this.padding-this.fontsize())+'px',left:this.padding+'px'});
+	this.container.find('.'+this.id+'_credit').css({position:'relative',top:(parseFloat(this.tall)-this.padding-this.fontsize())+'px',left:this.padding+'px'});
 };
 VirtualSky.prototype.updateSkyGradient = function(){
 	var s = null;
@@ -2421,7 +2421,7 @@ VirtualSky.prototype.drawImmediate = function(proj){
 			d.append('<div class="'+this.id+'_help"><a href="#">'+helpstr+'</a></div>')
 			 .find('.'+this.id+'_help')
 			 .css({
-				position:'absolute',
+				position:'relative',
 				'padding':this.padding+'px',
 				'z-index':20,
 				display:'block',
@@ -2453,7 +2453,7 @@ VirtualSky.prototype.drawImmediate = function(proj){
 		this.container.append('<div class="'+this.id+'_clock" title="'+this.getPhrase('datechange')+'">'+clockstring+'</div>');
 		off = S('#'+this.idinner).position();
 		this.container.find('.'+this.id+'_clock').css({
-			'position':'absolute',
+			'position':'relative',
 			'padding':0+'px',
 			'width':Math.round(metric_clock)+'px',
 			cursor:'pointer',
@@ -2540,7 +2540,7 @@ VirtualSky.prototype.drawImmediate = function(proj){
 
 	off = S('#'+this.idinner).position();
 	S('.'+this.id+'_position').css({
-		position:'absolute',
+		position:'relative',
 		padding:0,
 		'width':Math.round(metric_pos)+'px',
 		cursor:'pointer',
@@ -2577,7 +2577,7 @@ VirtualSky.prototype.createLightbox = function(lb,opts){
 		this.opts = opts || {};
 
 		var n = "virtualsky_bg";
-		if(this.vs.container.find('.'+n).length == 0) this.vs.container.append('<div class="'+n+'" style="position:absolute;z-index:99;left:0px;top:0px;right:0px;bottom:0px;background-color:rgba(0,0,0,0.7);"></div>');
+		if(this.vs.container.find('.'+n).length == 0) this.vs.container.append('<div class="'+n+'" style="position:relative;z-index:99;left:0px;top:0px;right:0px;bottom:0px;background-color:rgba(0,0,0,0.7);"></div>');
 		var bg = this.vs.container.find('.'+n);
 		if(bg.length > 0) bg.show();
 		this.bg = bg;
@@ -2615,7 +2615,7 @@ VirtualSky.prototype.createLightbox = function(lb,opts){
 			this.lb.css({'width':(w <= 500 ? '100%':'')});
 		}
 		columize.call(this,this.vs.wide,this.vs.tall);
-		this.lb.css({'position':'relative',left:'50%',top:'50%','transform':'translate3d(-50%,-50%,0)','max-height':'100%','box-sizing':'border-box','z-index': 100,'position': 'absolute'});
+		this.lb.css({'position':'relative',left:'50%',top:'50%','transform':'translate3d(-50%,-50%,0)','max-height':'100%','box-sizing':'border-box','z-index': 100,'position': 'relative'});
 		return this;
 	};
 	Lightbox.prototype.close = function(){
