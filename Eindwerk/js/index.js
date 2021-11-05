@@ -5,16 +5,33 @@ window.onload = function(){
         e.preventDefault();
         let inputPlaces = document.getElementById("inputPlace").value;
         console.log('Plaats', inputPlaces);
-        getWeather(inputPlaces);
+        getvals(inputPlaces)
     });
-   
-};
+}
 
-async function getWeather(inputPlaces) {
-    let lat = 50.74645;
-    let lon =4.35754;
-    // lat=${lat}&lon=${lon}
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?q=${inputPlaces}&appid=8532eda8a091632f5428caff44d04e73&units=metric`)
+function getvals(inputPlaces){
+    return fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`,
+    {
+    	method: "GET",
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      console.log(responseData);
+      let data = responseData.results[0].locations[0].displayLatLng;
+      console.log('b', data);
+      return data;
+    })
+    .catch(error => console.warn(error));
+}
+async function data(){
+    await getvals().then(response => console.log('Test', response));
+}
+  
+
+function getWeather(positions){
+    let lat = positions.lat;
+    console.log('c', lat);
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=8532eda8a091632f5428caff44d04e73&units=metric`)
     .then(response => response.json())
     .then(data => {
         console.log('Succes', data);
