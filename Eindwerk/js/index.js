@@ -5,38 +5,42 @@ window.onload = function(){
         e.preventDefault();
         let inputPlaces = document.getElementById("inputPlace").value;
         console.log('Plaats', inputPlaces);
-        getvals(inputPlaces)
+        getLatLong(inputPlaces);
+        getWeather();
     });
 }
 
-function getvals(inputPlaces){
+function getLatLong(inputPlaces){
     return fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`,
     {
     	method: "GET",
     })
     .then((response) => response.json())
     .then((responseData) => {
-      console.log(responseData);
+      console.log('Succes Lat Long', responseData);
       let data = responseData.results[0].locations[0].displayLatLng;
       console.log('b', data);
       return data;
     })
     .catch(error => console.warn(error));
 }
-async function data(){
-    await getvals().then(response => console.log('Test', response));
-}
-  
 
-function getWeather(positions){
-    let lat = positions.lat;
-    console.log('c', lat);
+
+function getWeather(){
+    let jsonDataLatLong;
+    getLatLong().then((data) => {
+        jsonDataLatLong = data;
+    });
+    console.log('Data Fetch Lat Long', jsonDataLatLong);
+    
+    let lat = 50.744849;
+    let lon = 4.346123;
     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=8532eda8a091632f5428caff44d04e73&units=metric`)
     .then(response => response.json())
     .then(data => {
-        console.log('Succes', data);
+        console.log('Succes Weather', data);
         let weatherInfo = data.hourly;
-        console.log('Info', weatherInfo);
+        //console.log('Info', weatherInfo);
         weatherInfo.forEach(weatherData => {
             let newData = new Date(weatherData.dt*1000);
             let containerWeather = document.getElementById('weatherRightMenu');
@@ -53,9 +57,11 @@ function getWeather(positions){
                 </div>`;
             containerWeather.insertAdjacentHTML('beforeend', htmlWeather);
         })
-            //let newData = new Date(weatherInfo.dt*1000-(weatherInfo.timezone*1000));
+            let newData = new Date(weatherInfo.dt*1000-(weatherInfo.timezone*1000));
     });
+
 }
+
 
 
 
