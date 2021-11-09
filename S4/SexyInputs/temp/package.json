@@ -1,0 +1,18 @@
+{
+  "name": "sexyinputs",
+  "version": "1.0.0",
+  "description": "S4 oefening inputs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack -d --watch",
+    "prod": "webpack -p"
+  },
+  "author": "Hannelore",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.62.2"
+  },
+  "dependencies": {
+    "cleave.js": "^1.6.0"
+  }
+}
