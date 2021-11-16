@@ -2,7 +2,8 @@
   "name": "sexyinputs",
   "version": "1.0.0",
   "description": "S4 oefening inputs",
-  "main": "index.js",
+  "type": "module",
+  "main": "main.js",
   "scripts": {
     "dev": "webpack -d --watch",
     "prod": "webpack -p"
