@@ -5,152 +5,50 @@ window.onload = function(){
         e.preventDefault();
         let inputPlaces = document.getElementById("inputPlace").value;
         console.log('Plaats', inputPlaces);
-        //console.log("url", url);
         getData(inputPlaces);
-        //getWeather();
     });
 }
 
-
-// async function getData(inputPlaces){
-//     let url = `http://www.mapquestapi.com/geocoding/v1/address?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`;
-//     let fetchUrl = await fetch(url);
-//     console.log('fetch json', fetchUrl.json());
-//     return fetchUrl.json();
-// }
 function getData(inputPlaces){
     fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`)
     .then(response => response.json())
     .then(data => {
         console.log('succes data fetch getData', data);
-        test2(data)
+        getWeather(data)
     })
 }
-
-function test2(data){
+function getWeather(data){              
     console.log('succes test data', data);
+    let lat = data.results[0].locations[0].displayLatLng.lat;
+    let lon = data.results[0].locations[0].displayLatLng.lng;
+    console.log('Lat getWeather', lat);
+    console.log('Lon getWeather', lon);
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=8532eda8a091632f5428caff44d04e73&units=metric`)
+    .then(response => response.json())
+    .then(data => {
+        //console.log('Succes Weather', data);
+        let weatherInfo = data.hourly;
+        //console.log('Info', weatherInfo);
+        weatherInfo.forEach(weatherData => {
+            let newData = new Date(weatherData.dt*1000);
+            let containerWeather = document.getElementById('weatherRightMenu');
+            let htmlWeather = `
+                <div id="weatherRightMenuBlock">
+                    <img class="iconWeather" src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png" alt="icon-weather-condition">
+                    <div id="columnText">
+                        <p id="clock">${newData}</p>
+                        <div id="conditionWeather">
+                        <p id="temperature">${weatherData.temp}°C</p>
+                        <p id="weatherConditionName">${weatherData.weather[0].description}</p>
+                        </div>
+                    </div>
+                </div>`;
+            containerWeather.insertAdjacentHTML('beforeend', htmlWeather);
+        })
+            //let newData = new Date(weatherInfo.dt*1000-(weatherInfo.timezone*1000));
+    });        
 }
-
-
-
-
-
-
-
-
-
-
-// function getWeather(){
-//     getData().then((response) => {
-//         console.log('Data Fetch Lat Long', response);
-//         let lat = data.lat;
-//         let lon = data.lng;
-//         console.log('Lat', lat);
-//         console.log('long', lon);
-            
-//         fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=8532eda8a091632f5428caff44d04e73&units=metric`)
-//         .then(response => response.json())
-//         .then(data => {
-//             //console.log('Succes Weather', data);
-//             let weatherInfo = data.hourly;
-//             //console.log('Info', weatherInfo);
-//             weatherInfo.forEach(weatherData => {
-//                 let newData = new Date(weatherData.dt*1000);
-//                 let containerWeather = document.getElementById('weatherRightMenu');
-//                 let htmlWeather = `
-//                     <div id="weatherRightMenuBlock">
-//                         <img class="iconWeather" src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png" alt="icon-weather-condition">
-//                         <div id="columnText">
-//                             <p id="clock">${newData}</p>
-//                             <div id="conditionWeather">
-//                             <p id="temperature">${weatherData.temp}°C</p>
-//                             <p id="weatherConditionName">${weatherData.weather[0].description}</p>
-//                             </div>
-//                         </div>
-//                     </div>`;
-//                 containerWeather.insertAdjacentHTML('beforeend', htmlWeather);
-//             })
-//             //let newData = new Date(weatherInfo.dt*1000-(weatherInfo.timezone*1000));
-//         });
-            
-//     })
-        
-// }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // async function getLatLong(inputPlaces){
-    //     fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`)
-    //     .then((response) => response.json())
-    //     .then((responseData) => {
-    //         console.log('Succes Lat Long', responseData);
-    //         let data = responseData.results[0].locations[0].displayLatLng;
-    //         console.log('b', data);
-    //         return data;
-    //     })
-    //     .catch(error => console.warn(error));
-    // }
-
 
 
     // fetch(`http://api.openweathermap.org/data/2.5/weather?q=London&APPID=8532eda8a091632f5428caff44d04e73&units=metric`)
