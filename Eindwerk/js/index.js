@@ -13,38 +13,52 @@ window.onload = function(){
 function getData(inputPlaces){
     fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`)
     .then(response => response.json())
-    .then(data => {
-        console.log('succes data fetch getData', data);
-        getWeather(data)                                            // doorgeven van data naar getWeather functie
+    .then(data2 => {
+        //console.log('succes data fetch getData', data);
+        getWeather(data2)                                            // doorgeven van data naar getWeather functie
     })
 }
 
 
-function getWeather(data){              
-    console.log('succes data getWeather', data);                    // zien of data wordt overgezet en wordt ingeladen
-    let lat = data.results[0].locations[0].displayLatLng.lat;       //ophalen data voor de latitude
-    let lon = data.results[0].locations[0].displayLatLng.lng;       // ophalen data voor de longitude
-    console.log('Lat getWeather', lat);
-    console.log('Lon getWeather', lon);
+function getWeather(data2){              
+    //console.log('succes data getWeather', data);                    // zien of data wordt overgezet en wordt ingeladen
+    let lat = data2.results[0].locations[0].displayLatLng.lat;       //ophalen data voor de latitude
+    let lon = data2.results[0].locations[0].displayLatLng.lng;       // ophalen data voor de longitude
+    
     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=8532eda8a091632f5428caff44d04e73&units=metric`)
     .then(response => response.json())
     .then(data => {
-        let weatherInfo = data.hourly;                              // ophalen data voor info weer per uur komende 48h
-        weatherInfo.forEach(weatherData => {
-            let newData = new Date(weatherData.dt*1000);
+        console.log('Weather data', data);
+        console.log('Weather data.current', data.current);
+        console.log('Weather data.hourly', data.hourly[0].dt);
+        let weatherHourly = data.hourly;
+        weatherHourly.forEach(weather => {
+            /* begin https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript/847196#847196*/
+            let unix_timestamp = data.hourly.dt;
+            // console.log('dt uur', data.hourly[0].dt);
+            let date = new Date(unix_timestamp * 1000);
+            let hours = date.getHours();
+            let minutes = "0" + date.getMinutes();
+            let seconds = "0" + date.getSeconds();
+            let formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+    
+            console.log('Tijd', formattedTime);
+            /* Eind https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript/847196#847196*/
+            
             let containerWeather = document.getElementById('weatherRightMenu');
             let htmlWeather = `
                 <div id="weatherRightMenuBlock">
-                    <img class="iconWeather" src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png" alt="icon-weather-condition">
+                    <img class="iconWeather" src="http://openweathermap.org/img/wn/${weather.weather[0].icon}.png" alt="icon-weather-condition">
                     <div id="columnText">
-                        <p id="clock">${newData}</p>
+                        <p id="clock">${formattedTime}</p>
                         <div id="conditionWeather">
-                        <p id="temperature">${weatherData.temp}°C</p>
-                        <p id="weatherConditionName">${weatherData.weather[0].description}</p>
+                        <p id="temperature">${weather.temp}°C</p>
+                        <p id="weatherConditionName">${weather.weather[0].description}</p>
                         </div>
                     </div>
                 </div>`;
             containerWeather.insertAdjacentHTML('beforeend', htmlWeather);
         })
+        //let newData = new Date(weatherInfo.dt*1000-(weatherInfo.timezone*1000));
     });        
 }
