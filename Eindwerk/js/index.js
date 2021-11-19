@@ -5,25 +5,40 @@ window.onload = function(){
         e.preventDefault();
         let inputPlaces = document.getElementById("inputPlace").value;
         console.log('Plaats', inputPlaces);
-        //let url = `http://www.mapquestapi.com/geocoding/v1/address?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`;
+        //console.log("url", url);
         getData(inputPlaces);
-        //test();
         //getWeather();
     });
 }
 
 
-async function getData(inputPlaces){
-    let response = await fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`);
-    console.log('response', response);
-    return await response.json();
-}
-
-function test(){
-    getData().then((response) => {
-        console.log('Ophalen buiten fetch', response);
+// async function getData(inputPlaces){
+//     let url = `http://www.mapquestapi.com/geocoding/v1/address?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`;
+//     let fetchUrl = await fetch(url);
+//     console.log('fetch json', fetchUrl.json());
+//     return fetchUrl.json();
+// }
+function getData(inputPlaces){
+    fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log('succes data fetch getData', data);
+        test2(data)
     })
 }
+
+function test2(data){
+    console.log('succes test data', data);
+}
+
+
+
+
+
+
+
+
+
 
 // function getWeather(){
 //     getData().then((response) => {
