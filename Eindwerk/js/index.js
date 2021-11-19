@@ -5,142 +5,136 @@ window.onload = function(){
         e.preventDefault();
         let inputPlaces = document.getElementById("inputPlace").value;
         console.log('Plaats', inputPlaces);
-        getLatLong(inputPlaces);
-        getWeather();
+        //let url = `http://www.mapquestapi.com/geocoding/v1/address?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`;
+        getData(inputPlaces);
+        //test();
+        //getWeather();
     });
 }
 
-// async function getLatLong(inputPlaces){
-//     return fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`,
-//     {
-//         method: "GET",
+
+async function getData(inputPlaces){
+    let response = await fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`);
+    console.log('response', response);
+    return await response.json();
+}
+
+function test(){
+    getData().then((response) => {
+        console.log('Ophalen buiten fetch', response);
+    })
+}
+
+// function getWeather(){
+//     getData().then((response) => {
+//         console.log('Data Fetch Lat Long', response);
+//         let lat = data.lat;
+//         let lon = data.lng;
+//         console.log('Lat', lat);
+//         console.log('long', lon);
+            
+//         fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=8532eda8a091632f5428caff44d04e73&units=metric`)
+//         .then(response => response.json())
+//         .then(data => {
+//             //console.log('Succes Weather', data);
+//             let weatherInfo = data.hourly;
+//             //console.log('Info', weatherInfo);
+//             weatherInfo.forEach(weatherData => {
+//                 let newData = new Date(weatherData.dt*1000);
+//                 let containerWeather = document.getElementById('weatherRightMenu');
+//                 let htmlWeather = `
+//                     <div id="weatherRightMenuBlock">
+//                         <img class="iconWeather" src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png" alt="icon-weather-condition">
+//                         <div id="columnText">
+//                             <p id="clock">${newData}</p>
+//                             <div id="conditionWeather">
+//                             <p id="temperature">${weatherData.temp}°C</p>
+//                             <p id="weatherConditionName">${weatherData.weather[0].description}</p>
+//                             </div>
+//                         </div>
+//                     </div>`;
+//                 containerWeather.insertAdjacentHTML('beforeend', htmlWeather);
+//             })
+//             //let newData = new Date(weatherInfo.dt*1000-(weatherInfo.timezone*1000));
+//         });
+            
 //     })
-//     .then((response) => response.json())
-//     .then((responseData) => {
-//         console.log('Succes Lat Long', responseData);
-//         let data = responseData.results[0].locations[0].displayLatLng;
-//         console.log('b', data);
-//         return data;
-//     })
-//    .catch(error => console.warn(error));
+        
 // }
-
-async function getLatLong(inputPlaces){
-    fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`)
-    .then((response) => response.json())
-    .then((responseData) => {
-        console.log('Succes Lat Long', responseData);
-        let data = responseData.results[0].locations[0].displayLatLng;
-        console.log('b', data);
-        return data;
-    })
-    .catch(error => console.warn(error));
-}
-
-
-// getLatLong().then((data) => {
-//     console.log('Controle Data', data);
-//     getWeather(data)
-// });
-function getWeather(){
-    // console.log('Data Fetch Lat Long', jsonDataLatLong);
-    getLatLong().then((data) => {
-        let lat = data.lat;
-        let lon = data.lng;
-        console.log('Lat', lat);
-        console.log('long', lon);
     
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=8532eda8a091632f5428caff44d04e73&units=metric`)
-        .then(response => response.json())
-        .then(data => {
-            //console.log('Succes Weather', data);
-            let weatherInfo = data.hourly;
-            //console.log('Info', weatherInfo);
-            weatherInfo.forEach(weatherData => {
-                let newData = new Date(weatherData.dt*1000);
-                let containerWeather = document.getElementById('weatherRightMenu');
-                let htmlWeather = `
-                    <div id="weatherRightMenuBlock">
-                        <img class="iconWeather" src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png" alt="icon-weather-condition">
-                        <div id="columnText">
-                            <p id="clock">${newData}</p>
-                            <div id="conditionWeather">
-                                <p id="temperature">${weatherData.temp}°C</p>
-                                <p id="weatherConditionName">${weatherData.weather[0].description}</p>
-                            </div>
-                        </div>
-                    </div>`;
-                containerWeather.insertAdjacentHTML('beforeend', htmlWeather);
-            })
-                //let newData = new Date(weatherInfo.dt*1000-(weatherInfo.timezone*1000));
-        });
-
-    })
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // async function getLatLong(inputPlaces){
+    //     fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=y9jdsRhSBmSiVS7TFBcWCAsH6r9Xg90c&location=${inputPlaces}`)
+    //     .then((response) => response.json())
+    //     .then((responseData) => {
+    //         console.log('Succes Lat Long', responseData);
+    //         let data = responseData.results[0].locations[0].displayLatLng;
+    //         console.log('b', data);
+    //         return data;
+    //     })
+    //     .catch(error => console.warn(error));
+    // }
 
 
 
