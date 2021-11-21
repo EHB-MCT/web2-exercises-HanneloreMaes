@@ -20,7 +20,6 @@ function getData(inputPlaces){
     })
 }
 
-
 function getWeather(data2){              
     //console.log('succes data getWeather', data);                    // zien of data wordt overgezet en wordt ingeladen
     let lat = data2.results[0].locations[0].displayLatLng.lat;       //ophalen data voor de latitude

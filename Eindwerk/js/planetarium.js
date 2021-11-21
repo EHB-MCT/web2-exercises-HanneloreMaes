@@ -1,5 +1,9 @@
 /* <!--begin https://virtualsky.lco.global/ --> */
 
+// longitude (53.0) - the longitude of the observer
+// latitude (-2.5) - the latitude of the observer
+//showposition (true) - show/hide the latitude and longitude
+
 let planetarium;
 S(document).ready(function() {
     planetarium = S.virtualsky({
@@ -13,7 +17,8 @@ S(document).ready(function() {
         'showplanetslabels': true,
         'showstars': true,
         'showstarlabels': true,
-        'gridlines_az': true
+        'gridlines_az': true,
+        'live': true
     });
 });
 
