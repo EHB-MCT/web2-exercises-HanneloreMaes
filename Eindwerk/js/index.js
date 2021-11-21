@@ -39,7 +39,6 @@ function getWeather(data2){
             let hours = date.getHours();
             let minutes = "0" + date.getMinutes();
             let formattedTime = hours + ':' + minutes.substr(-2);
-            console.log('Tijd', formattedTime);
             /* Eind https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript/847196#847196*/
             
             let containerWeather = document.getElementById('weatherRightMenu');
@@ -49,8 +48,9 @@ function getWeather(data2){
                     <div id="columnText">
                         <p id="clock">${formattedTime}</p>
                         <div id="conditionWeather">
-                        <p id="temperature">${weather.temp}°C</p>
-                        <p id="weatherConditionName">${weather.weather[0].description}</p>
+                            <p id="temperature">${weather.temp}°C</pv>
+                            &nbsp; 
+                            <p id="weatherConditionName">${weather.weather[0].description}</p>
                         </div>
                     </div>
                 </div>`;
