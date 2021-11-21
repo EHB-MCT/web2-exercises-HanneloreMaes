@@ -16,6 +16,7 @@ function getData(inputPlaces){
     .then(data2 => {
         //console.log('succes data fetch getData', data);
         getWeather(data2)                                            // doorgeven van data naar getWeather functie
+                                                                    // Beter niet boven in window.onload function -> anders wordt het 2x uitgevoerd
     })
 }
 
@@ -29,19 +30,15 @@ function getWeather(data2){
     .then(response => response.json())
     .then(data => {
         console.log('Weather data', data);
-        console.log('Weather data.current', data.current);
-        console.log('Weather data.hourly', data.hourly[0].dt);
         let weatherHourly = data.hourly;
         weatherHourly.forEach(weather => {
+
             /* begin https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript/847196#847196*/
-            let unix_timestamp = data.hourly.dt;
-            // console.log('dt uur', data.hourly[0].dt);
+            let unix_timestamp = weather.dt;
             let date = new Date(unix_timestamp * 1000);
             let hours = date.getHours();
             let minutes = "0" + date.getMinutes();
-            let seconds = "0" + date.getSeconds();
-            let formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-    
+            let formattedTime = hours + ':' + minutes.substr(-2);
             console.log('Tijd', formattedTime);
             /* Eind https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript/847196#847196*/
             
@@ -59,6 +56,5 @@ function getWeather(data2){
                 </div>`;
             containerWeather.insertAdjacentHTML('beforeend', htmlWeather);
         })
-        //let newData = new Date(weatherInfo.dt*1000-(weatherInfo.timezone*1000));
     });        
 }
