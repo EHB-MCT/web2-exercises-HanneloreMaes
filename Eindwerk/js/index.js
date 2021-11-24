@@ -1,5 +1,7 @@
 "use strict";
 
+
+
 window.onload = function(){
     let submitForm = document.getElementById('searchform').addEventListener("submit", e => {
         e.preventDefault();
@@ -15,12 +17,36 @@ function getData(inputPlaces){
     .then(response => response.json())
     .then(data2 => {
         //console.log('succes data fetch getData', data);
-        getWeather(data2)                                            // doorgeven van data naar getWeather functie
-                                                                    // Beter niet boven in window.onload function -> anders wordt het 2x uitgevoerd
+        getWeather(data2, inputPlaces);                                // doorgeven van data naar getWeather functie
+                                                                      // Beter niet boven in window.onload function -> anders wordt het 2x uitgevoerd
+
     })
 }
 
-function getWeather(data2){              
+/* <!--begin https://virtualsky.lco.global/ --> */
+let planetarium;
+S(document).ready(function() {
+    planetarium = S.virtualsky({
+        'id': 'starmapper',
+        'projection': 'stereo',
+        'latitude': 50.8385,
+        'longitude': 4.3754,
+        'ground': true,
+        'gradient': true,
+        'constellations': true,
+        'constellationlabels': true,
+        'showplanets': true,
+        'showplanetslabels': true,
+        'showstars': true,
+        'showstarlabels': true,
+        'gridlines_az': true,
+        'live': true,
+        'showposition': false
+    });
+});
+/* <!--eind https://virtualsky.lco.global/ --> */
+
+function getWeather(data2, inputPlaces){              
     //console.log('succes data getWeather', data);                    // zien of data wordt overgezet en wordt ingeladen
     let lat = data2.results[0].locations[0].displayLatLng.lat;       //ophalen data voor de latitude
     let lon = data2.results[0].locations[0].displayLatLng.lng;       // ophalen data voor de longitude
@@ -30,22 +56,47 @@ function getWeather(data2){
     .then(data => {
         console.log('Weather data', data);
         let weatherHourly = data.hourly;
+
+        /* begin https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript/847196#847196*/
+        let unix_timestamp = data.current.dt;
+        let date = new Date(unix_timestamp * 1000);
+        let hours = date.getHours();
+        let minutes = "0" + date.getMinutes();
+        let formattedTime = hours + ':' + minutes.substr(-2);
+        /* Eind https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript/847196#847196*/
+
+        let containerWeatherLeft = document.getElementById('weatherLeftMenu');
+            let htmlWeatherLeft = `
+                <div id="weatherLeftMenuBlock">
+                    <h1 id="current-inputplace">${inputPlaces}</h1>
+                    <div id="current-time">${formattedTime}</div>
+                    <div id="columnText">
+                        <div id="conditionWeatherLeft">
+                            <p id="temperatureLeft">${data.current.temp}°C</pv>
+                            &nbsp; 
+                            <p id="weatherConditionNameLeft">${data.current.weather[0].description}</p>
+                        </div>
+                    </div>
+                </div>`;
+        containerWeatherLeft.insertAdjacentHTML('beforeend', htmlWeatherLeft);
+        console.log('Left', htmlWeatherLeft);
+
         weatherHourly.forEach(weather => {
 
             /* begin https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript/847196#847196*/
             let unix_timestamp = weather.dt;
             let date = new Date(unix_timestamp * 1000);
-            let hours = date.getHours();
+            let hours2 = date.getHours()+1;
             let minutes = "0" + date.getMinutes();
-            let formattedTime = hours + ':' + minutes.substr(-2);
+            let formattedTime2 = hours2 + ':' + minutes.substr(-2);
             /* Eind https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript/847196#847196*/
             
-            let containerWeather = document.getElementById('weatherRightMenu');
-            let htmlWeather = `
+            let containerWeatherRight = document.getElementById('weatherRightMenu');
+            let htmlWeatherRight = `
                 <div id="weatherRightMenuBlock">
                     <img class="iconWeather" src="http://openweathermap.org/img/wn/${weather.weather[0].icon}.png" alt="icon-weather-condition">
                     <div id="columnText">
-                        <p id="clock">${formattedTime}</p>
+                        <p id="clock">${formattedTime2}</p>
                         <div id="conditionWeather">
                             <p id="temperature">${weather.temp}°C</pv>
                             &nbsp; 
@@ -53,7 +104,7 @@ function getWeather(data2){
                         </div>
                     </div>
                 </div>`;
-            containerWeather.insertAdjacentHTML('beforeend', htmlWeather);
+            containerWeatherRight.insertAdjacentHTML('beforeend', htmlWeatherRight);
         })
     });        
 }
