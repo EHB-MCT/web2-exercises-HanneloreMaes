@@ -75,6 +75,40 @@ body{
 #inputPlace{
 	top: 0%;
 }
+
+#current-inputplace{
+	color: white;
+	top: 0%;
+}
+#weatherLeftMenu{
+	color: white;
+	margin-left: 2%;
+}
+#weatherLeftMenuBlock{
+	color: white;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+#conditionWeatherLeft{
+	color: white;
+	display: flex;
+	flex-direction: row;
+	justify-content:space-evenly;
+}
+#current-time{
+	color: white;
+	font-size: 22pt;
+}
+#weatherConditionNameLeft{
+	color: white;
+	display: inline;
+}
+#temperatureLeft{
+	color: white;
+}
+
+
 #weatherRightMenu{
 	margin-right: 5%;
 }
@@ -93,8 +127,6 @@ body{
 	font-size: 16pt;
 }
 #weatherConditionName{
-	/* display: flex;
-	flex-direction: row; */
 	display: inline;
 }
 
@@ -108,46 +140,12 @@ body{
 	flex-direction: row;
 	justify-content:space-evenly;
 }
+
 #columnText{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
-
-/* #searchform{
-	height: 50%;
-}
-#searchform.input{
-	border: 0px;
-	padding: 0px 0px 2px 2px;
-}
-
-#weatherRightMenuBlock{
-	display: flex;
-	justify-content: flex-end;
-	overflow-y: hidden;
-}
-#weatherConditionName, #temperature, #clock{
-	color: white;
-	font-size: 22pt;
-}
-#weatherConditionName, #temperature{
-	font-size: 16pt;
-}
-
-.iconWeather{
-	width: 200px;
-  	height: auto;
-}
-#conditionWeather{
-	display: flex;
-	flex-direction: row;
-	justify-content:stretch;
-}
-#columnText{
-	display: flex;
-	flex-direction: column;
-} */
 
 ::-webkit-scrollbar{
 	width: 10px;
