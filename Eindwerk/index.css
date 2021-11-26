@@ -76,7 +76,33 @@ body{
 	top: 0%;
 }
 
+#containerMenu{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+#columnText{
+	margin-bottom: 10%;
+}
+
+#containerWeatherConditionLeft{
+	display: flex;
+	flex-direction: column;
+}
+#containerInfoLeft{
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+	justify-content: space-around;
+	margin-bottom: 0px;
+}
+#current-time{
+	color: white;
+	font-size: 60pt;
+	margin: 0px;
+}
 #current-inputplace{
+	font-size: 28px;
 	color: white;
 	top: 0%;
 }
@@ -85,31 +111,43 @@ body{
 	margin-left: 2%;
 }
 #weatherLeftMenuBlock{
-	color: white;
 	display: flex;
-	justify-content: flex-start;
-	align-items: center;
+	flex-direction: column;
+	align-content: flex-end;
+	position: absolute;
+	bottom:0;
+	margin-bottom: 1%;
+	background-color: rgba(0, 27, 44, 0.664);
+	border-radius: 10%;
+	padding-left: 2%;
+	padding-right: 2%;
+	padding-top: 2%;
 }
 #conditionWeatherLeft{
 	color: white;
 	display: flex;
 	flex-direction: row;
 	justify-content:space-evenly;
-}
-#current-time{
-	color: white;
-	font-size: 22pt;
+	align-items: baseline;
 }
 #weatherConditionNameLeft{
 	color: white;
-	display: inline;
+	margin: 0px;
 }
 #temperatureLeft{
 	color: white;
+	margin: 0px;
+	font-size: 40px;
+}
+.iconWeatherLeft{
+	width: 80%;
+	height: auto;
+	margin: 0px;
 }
 
 
 #weatherRightMenu{
+	z-index: 2;
 	margin-right: 5%;
 }
 #weatherRightMenuBlock{

@@ -68,13 +68,19 @@ function getWeather(data2, inputPlaces){
         let containerWeatherLeft = document.getElementById('weatherLeftMenu');
             let htmlWeatherLeft = `
                 <div id="weatherLeftMenuBlock">
-                    <h1 id="current-inputplace">${inputPlaces}</h1>
-                    <div id="current-time">${formattedTime}</div>
+                    <div id="containerInfoLeft">
+                        <p id="current-time">${formattedTime}</p>
+                        &nbsp; 
+                        <h1 id="current-inputplace">${inputPlaces}</h1>
+                    </div>
                     <div id="columnText">
                         <div id="conditionWeatherLeft">
                             <p id="temperatureLeft">${data.current.temp}°C</pv>
-                            &nbsp; 
-                            <p id="weatherConditionNameLeft">${data.current.weather[0].description}</p>
+                            &nbsp; &nbsp; &nbsp; 
+                            <div id="containerWeatherConditionLeft">
+                                <img class="iconWeatherLeft" src="http://openweathermap.org/img/wn/${data.current.weather[0].icon}.png" alt="icon-weather-condition">
+                                <p id="weatherConditionNameLeft">${data.current.weather[0].description}</p>
+                            </div>
                         </div>
                     </div>
                 </div>`;
