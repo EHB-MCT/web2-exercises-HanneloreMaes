@@ -163,7 +163,7 @@ body{
 }
 #clock{
 	color: white;
-	font-size: 22pt;
+	font-size: 40px;
 }
 #weatherConditionName, #temperature{
 	color: white;
