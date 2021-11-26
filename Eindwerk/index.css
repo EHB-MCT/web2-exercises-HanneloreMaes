@@ -94,7 +94,7 @@ body{
 	flex-direction: row;
 	align-items: baseline;
 	justify-content: space-around;
-	margin-bottom: 0px;
+	margin: 10px 15px 0px 15px;
 }
 #current-time{
 	color: white;
@@ -122,9 +122,6 @@ body{
 	margin-bottom: 1%;
 	background-color: rgba(0, 27, 44, 0.664);
 	border-radius: 10%;
-	padding-left: 2%;
-	padding-right: 2%;
-	padding-top: 2%;
 }
 #conditionWeatherLeft{
 	color: white;

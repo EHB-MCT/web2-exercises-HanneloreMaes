@@ -28,6 +28,7 @@ let planetarium;
 S(document).ready(function() {
     planetarium = S.virtualsky({
         'id': 'starmapper',
+        'clock': false,
         'projection': 'stereo',
         'latitude': 50.8385,
         'longitude': 4.3754,
