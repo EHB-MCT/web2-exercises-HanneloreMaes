@@ -1,9 +1,10 @@
 "use strict";
 
+getStarted();
 
-
-window.onload = function(){
-    let submitForm = document.getElementById('searchform').addEventListener("submit", e => {
+function getStarted(){
+    let submitForm = document.getElementById('searchform');
+    submitForm.addEventListener("submit", e => {
         e.preventDefault();
         let inputPlaces = document.getElementById("inputPlace").value;
         console.log('Plaats', inputPlaces);
@@ -17,6 +18,7 @@ function getData(inputPlaces){
     .then(response => response.json())
     .then(data2 => {
         //console.log('succes data fetch getData', data);
+        positionStarMap(data2);
         getWeather(data2, inputPlaces);                                // doorgeven van data naar getWeather functie
                                                                       // Beter niet boven in window.onload function -> anders wordt het 2x uitgevoerd
 
@@ -25,26 +27,31 @@ function getData(inputPlaces){
 
 /* <!--begin https://virtualsky.lco.global/ --> */
 let planetarium;
-S(document).ready(function() {
-    planetarium = S.virtualsky({
-        'id': 'starmapper',
-        'clock': false,
-        'projection': 'stereo',
-        'latitude': 50.8385,
-        'longitude': 4.3754,
-        'ground': true,
-        'gradient': true,
-        'constellations': true,
-        'constellationlabels': true,
-        'showplanets': true,
-        'showplanetslabels': true,
-        'showstars': true,
-        'showstarlabels': true,
-        'gridlines_az': true,
-        'live': true,
-        'showposition': false
+function positionStarMap(data2){
+    let latitude = data2.results[0].locations[0].displayLatLng.lat;
+    let longitude =data2.results[0].locations[0].displayLatLng.lng;
+    console.log('Lat, Long', latitude, longitude);
+    S(document).ready(function() {
+        planetarium = S.virtualsky({
+            'id': 'starmapper',
+            'clock': false,
+            'projection': 'stereo',
+            'latitude': latitude,
+            'longitude': longitude,
+            'ground': true,
+            'gradient': true,
+            'constellations': true,
+            'constellationlabels': true,
+            'showplanets': true,
+            'showplanetslabels': true,
+            'showstars': true,
+            'showstarlabels': true,
+            'gridlines_az': true,
+            'live': true,
+            'showposition': true
+        });
     });
-});
+}
 /* <!--eind https://virtualsky.lco.global/ --> */
 
 function getWeather(data2, inputPlaces){              
