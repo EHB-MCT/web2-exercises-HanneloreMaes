@@ -73,8 +73,7 @@ function getWeather(data2, inputPlaces){
         let formattedTime = hours + ':' + minutes;
         /* Eind https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript/847196#847196*/
 
-        let containerWeatherLeft = document.getElementById('weatherLeftMenu');
-            let htmlWeatherLeft = `
+        let containerWeatherLeft = document.getElementById('weatherLeftMenu').innerHTML = `
                 <div id="weatherLeftMenuBlock">
                     <div id="containerInfoLeft">
                         <p id="current-time">${formattedTime}</p>
@@ -92,9 +91,7 @@ function getWeather(data2, inputPlaces){
                         </div>
                     </div>
                 </div>`;
-        containerWeatherLeft.insertAdjacentHTML('beforeend', htmlWeatherLeft);
-        console.log('Left', htmlWeatherLeft);
-
+        document.getElementById('weatherRightMenu').innerHTML = "";
         weatherHourly.forEach(weather => {
 
             /* begin https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript/847196#847196*/
@@ -105,8 +102,8 @@ function getWeather(data2, inputPlaces){
             let formattedTime2 = hours2 + ':' + minutes.substr(-2);
             /* Eind https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript/847196#847196*/
             
-            let containerWeatherRight = document.getElementById('weatherRightMenu');
-            let htmlWeatherRight = `
+            let containerMenuRight = document.getElementById('weatherRightMenu');
+            let htmlStringRight= `
                 <div id="weatherRightMenuBlock">
                     <img class="iconWeather" src="http://openweathermap.org/img/wn/${weather.weather[0].icon}.png" alt="icon-weather-condition">
                     <div id="columnText">
@@ -118,7 +115,7 @@ function getWeather(data2, inputPlaces){
                         </div>
                     </div>
                 </div>`;
-            containerWeatherRight.insertAdjacentHTML('beforeend', htmlWeatherRight);
+            containerMenuRight.insertAdjacentHTML('beforeend', htmlStringRight)
         })
     });        
 }
