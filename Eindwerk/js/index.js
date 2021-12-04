@@ -73,6 +73,28 @@ function getWeather(data2, inputPlaces){
         let formattedTime = hours + ':' + minutes;
         /* Eind https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript/847196#847196*/
 
+        // if (data.current.weather[0].description == "clear sky"){
+            let containerNearestPlace = document.getElementById('placeToSeeStars').innerHTML = `
+                <div id="weatherNearestPlace">
+                    <h1 id="nearestPlace">Nearest place to see stars:</h1>
+                    <div id="ContainerAllInfoNearest">
+                        <div id="locatieTimeNearest">
+                            <h2 id="locationNearbyCity">${inputPlaces}</h2>
+                            <p id="clockNearest">${formattedTime}</p>
+                        </div>
+                        <div id="columnTextNearest">
+                            <p id="temperature">${data.current.temp}°C</pv>
+                            <div id="conditionWeatherNearest">
+                                <img class="iconWeatherNearest" src="http://openweathermap.org/img/wn/${data.current.weather[0].icon}.png" alt="icon-weather-condition">
+                                &nbsp; 
+                                <p id="weatherConditionNameNearest">${data.current.weather[0].description}</p>
+                            </div>
+                            <div class="arrow"></div>
+                        </div>
+                    </div>
+                </div>`;                
+        // }
+
         let containerWeatherLeft = document.getElementById('weatherLeftMenu').innerHTML = `
                 <div id="weatherLeftMenuBlock">
                     <div id="containerInfoLeft">
