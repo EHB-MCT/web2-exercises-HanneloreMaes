@@ -8,8 +8,11 @@ body{
 	font-size: 1em;
 }
 
-
-
+/***************************************/
+/***************************************/
+/*https://virtualsky.lco.global/  begin*/
+/***************************************/
+/***************************************/
 #overlay {
 	position: fixed;
 	display: none;
@@ -22,11 +25,7 @@ body{
 	background-color: rgba(0,0,0,0.5);
 	z-index: 2;
 	cursor: pointer;
-  }
-  
-
-
-/* https://virtualsky.lco.global/  begin*/
+}
 #headerMap {
 	overflow-x: hidden;
 	position: relative;
@@ -69,9 +68,19 @@ body{
 	width: 128px; 
     height: 128px; 
 }
-/* https://virtualsky.lco.global/ eind*/
+/***************************************/
+/***************************************/
+/*https://virtualsky.lco.global/  eind*/
+/***************************************/
+/***************************************/
 
 
+
+/***************************************/
+/***************************************/
+/*Weather begin*/
+/***************************************/
+/***************************************/
 #mainMap{
 	position: absolute;
 	overflow-y: scroll;
@@ -102,6 +111,9 @@ body{
 	margin-bottom: 10%;
 }
 
+/*******************/
+/*Menu Left  begin*/
+/*******************/
 #containerWeatherConditionLeft{
 	display: flex;
 	flex-direction: column;
@@ -163,6 +175,10 @@ body{
 }
 
 
+/*******************/
+/*Menu Right  begin*/
+/*******************/
+
 #weatherRightMenu{
 	right: 0px;
 	z-index: 2;
@@ -200,13 +216,118 @@ body{
 	flex-direction: row;
 	justify-content:space-evenly;
 }
-
 #columnText{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
+
+/***************************/
+/*Menu Nearest Place  begin*/
+/***************************/
+#placeToSeeStars{
+	/* display: flex;
+	align-content: flex-end; */
+	position: absolute;
+	right:0;
+	margin-bottom: 1%;
+	padding:0% 2% 1% 2% ;
+	background-color: rgba(0, 27, 44, 0.664);
+	border-radius: 10%;
+}
+#nearestPlace{
+	font-size: 25px;
+	color: white;
+}
+#locatieTimeNearest{
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+}
+#locationNearbyCity{
+	font-size: 25px;
+	color: white;
+	top: 0%;
+	margin-right: 2%;
+}
+#clockNearest{
+	color: white;
+	font-size: 13px;
+	margin: 0px;
+}
+#containerWeatherNearestTime{
+	display: flex;
+	flex-direction: row;
+}
+#temperatureNearest{
+	color: white;
+	margin: 0px;
+	font-size: 40px;
+}
+#conditionWeatherNearest{
+	display: flex;
+	flex-direction: column;
+	margin: 10px 15px 0px 15px;
+}
+#weatherConditionNameNearest{
+	color: white;
+	margin: 0px;
+}
+.iconWeatherNearest{
+	width: 80%;
+	height: auto;
+	margin: 0px;
+}
+#columnTextNearest{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+#ContainerAllInfoNearest{
+	padding-left: 10%;
+}
+
+/***************************************/
+/*https://www.sliderrevolution.com/resources/css-arrow/  begin*/
+/*Author: Carlo Flores*/
+/***************************************/
+
+.arrow {
+	background: #fff;
+	height: 3px;
+	width: 30px;
+	margin: 0 auto;
+	position: relative;
+	cursor: pointer;
+}
+.arrow:before, .arrow:after {
+	content: "";
+	background: #fff;
+	position: absolute;
+	height: 3px;
+	width: 15px;
+}
+.arrow:before {
+	right: -3px;
+	bottom: -4px;
+	transform: rotate(-45deg);
+}
+.arrow:after {
+	right: -3px;
+	top: -4px;
+	transform: rotate(45deg);
+}
+/***************************************/
+/*https://www.sliderrevolution.com/resources/css-arrow/  eind*/
+/*Author: Carlo Flores*/
+/***************************************/
+
+
+
+/*******************/
+/*Scrollbar*********/
+/*******************/
 ::-webkit-scrollbar{
 	width: 10px;
 }
@@ -214,3 +335,9 @@ body{
 	background: gray;
 	border-radius: 15px;
 }
+
+/***************************************/
+/***************************************/
+/*Weather begin*/
+/***************************************/
+/***************************************/
